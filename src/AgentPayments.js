@@ -130,7 +130,7 @@ export default function AgentPayments() {
         try {
             const res = await axios.get("https://cors-anywhere.herokuapp.com/https://atstest.ajisaqsolutions.com/api/aggregator/getAgentPayments?userName="
                 + userName + "&apiKey=" + apiKey + "&agentId="
-                + agentId + "&startDate=" + util.getTodayDate(start) + "&stopDate=" + util.getTodayDate(end) + "&hash=" + hash);
+                + agentId + "&startDate=" + util.getTodayDate(start) + "&stopDate=" + util.getTodayDate(end) + "-23&hash=" + hash);
             // console.log(res.data);
             if (res.data.status === "OK") {
                 let d = {};
