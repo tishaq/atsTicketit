@@ -143,7 +143,7 @@ export default function AgentTickets() {
                         d[item] = [];
                     }
 
-                    d[item].push(element.fee);
+                    d[item].push(element.fee * element.quantity);
                     total += element.fee * element.quantity
 
                 });
