@@ -72,7 +72,11 @@ export default function Aggregator() {
         // console.log(hash);
         try {
             const res = await axios.get("https://atstest.ajisaqsolutions.com/api/admin/listAggregators?userName="
-                + user + "&apiKey=" + apiKey + "&hash=" + hash);
+                + user + "&apiKey=" + apiKey + "&hash=" + hash, {
+                headers: {
+                    'Access-Control-Allow-Origin': '*',
+                }
+            });
             // console.log(res.data);
             setAggregators(res.data);
         } catch (error) {
@@ -91,7 +95,11 @@ export default function Aggregator() {
         // console.log(hash);
         const res = await axios.get("https://atstest.ajisaqsolutions.com/api/admin/createAggregator?userName="
             + user + "&apiKey=" + apiKey + "&name=" + name + "&username=" + userName +
-            "&password=" + password + "&email=" + email + "&phone=" + phone + "&hash=" + hash);
+            "&password=" + password + "&email=" + email + "&phone=" + phone + "&hash=" + hash, {
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+            }
+        });
         console.log(res.data);
 
         setIsLoader(false);

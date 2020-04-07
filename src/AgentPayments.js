@@ -130,7 +130,11 @@ export default function AgentPayments() {
         try {
             const res = await axios.get("https://atstest.ajisaqsolutions.com/api/aggregator/getAgentPayments?userName="
                 + userName + "&apiKey=" + apiKey + "&agentId="
-                + agentId + "&startDate=" + util.getTodayDate(start) + "&stopDate=" + util.getTodayDate(end) + "-23&hash=" + hash);
+                + agentId + "&startDate=" + util.getTodayDate(start) + "&stopDate=" + util.getTodayDate(end) + "-23&hash=" + hash, {
+                headers: {
+                    'Access-Control-Allow-Origin': '*',
+                }
+            });
             // console.log(res.data);
             if (res.data.status === "OK") {
                 let d = {};
@@ -166,7 +170,11 @@ export default function AgentPayments() {
         const hash = sha.sha512(userName + apiKey);
         // console.log(hash);
         const res = await axios.get("https://atstest.ajisaqsolutions.com/api/aggregator/listAgent?userName="
-            + userName + "&apiKey=" + apiKey + "&hash=" + hash);
+            + userName + "&apiKey=" + apiKey + "&hash=" + hash, {
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+            }
+        });
         // console.log(res.data);
 
         return res.data
