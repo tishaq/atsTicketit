@@ -77,99 +77,96 @@ function App() {
     const hash = sha.sha512(userName + apiKey + util.getTodayDate(start) + util.getTodayDate(end));
     // console.log("https://atstest.ajisaqsolutions.com/api/admin/ticketsSummary?userName="
     //   + userName + "&apiKey=" + apiKey + "&startDate=" + util.getTodayDate(start) + "&stopDate=" + util.getTodayDate(end) + "&hash=" + hash, {
-    headers: {
-      'Access-Control-Allow-Origin': '*',
-                }
-  });
-  try {
-    const res = await axios.get("https://atstest.ajisaqsolutions.com/api/admin/ticketsSummary?userName="
-      + userName + "&apiKey=" + apiKey + "&startDate=" + util.getTodayDate(start) + "&stopDate=" + util.getTodayDate(end) + "&hash=" + hash, {
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-      }
-    });
-    if (res.data.status === "OK") {
-      res.data.data.forEach((element) => {
-        const agent = element.agent.name + "\n(" + element.agent.id + ")";
-        if (!d[agent]) {
-          d[agent] = 0;
+
+    try {
+      const res = await axios.get("https://atstest.ajisaqsolutions.com/api/admin/ticketsSummary?userName="
+        + userName + "&apiKey=" + apiKey + "&startDate=" + util.getTodayDate(start) + "&stopDate=" + util.getTodayDate(end) + "&hash=" + hash, {
+        headers: {
+          'Access-Control-Allow-Origin': '*',
         }
-
-        d[agent] += element.fee * element.quantity;
-
       });
-      // console.log(d);
-      setTicketSummary(d);
+      if (res.data.status === "OK") {
+        res.data.data.forEach((element) => {
+          const agent = element.agent.name + "\n(" + element.agent.id + ")";
+          if (!d[agent]) {
+            d[agent] = 0;
+          }
 
-    } else {
-      console.log(res.data);
+          d[agent] += element.fee * element.quantity;
+
+        });
+        // console.log(d);
+        setTicketSummary(d);
+
+      } else {
+        console.log(res.data);
+      }
+    } catch (error) {
+      console.log(error);
     }
-  } catch (error) {
-    console.log(error);
-  }
 
-  setIsLoader(false);
+    setIsLoader(false);
 
-};
+  };
 
-return (
-  <div id="wrapper" >
-    <Menu setToggleMenu={setToggleMenu} toggleMenu={toggleMenu} />
-    <div id="content-wrapper" className="d-flex flex-column">
-      <div id="content">
-        <Nav setToggleMenu={setToggleMenu} toggleMenu={toggleMenu} />
-        <div className="container-fluid">
-          <div className="col-lg-12 col-md-12 col-sm-12">
-            <div className="card shadow mb-lg-1">
-              <div className="card-header py-3"
-                style={{
-                  background: 'linear-gradient(to bottom, #EDC7B7, #FFFFFF)', color: '#5A0028'
-                }}>
-                <h6 className="font-weight-bold text-dark text-center" > Ticket Pool
-
-                  </h6>
-                <DateRangePicker startDate={new Date()}
-                  endDate={new Date()}
-                  ranges={{
-                    'Today': [moment(), moment()],
-                    'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-                    'Last 7 Days': [moment().subtract(6, 'days'), moment()],
-                    'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-                    'This Month': [moment().startOf('month'), moment().endOf('month')],
-                    'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
-                  }}
-                  showCustomRangeLabel={true}
-
-                  onApply={(e, p) => {
-                    loadAgentTickets(p.startDate._d, p.endDate._d);
+  return (
+    <div id="wrapper" >
+      <Menu setToggleMenu={setToggleMenu} toggleMenu={toggleMenu} />
+      <div id="content-wrapper" className="d-flex flex-column">
+        <div id="content">
+          <Nav setToggleMenu={setToggleMenu} toggleMenu={toggleMenu} />
+          <div className="container-fluid">
+            <div className="col-lg-12 col-md-12 col-sm-12">
+              <div className="card shadow mb-lg-1">
+                <div className="card-header py-3"
+                  style={{
+                    background: 'linear-gradient(to bottom, #EDC7B7, #FFFFFF)', color: '#5A0028'
                   }}>
-                  <button className="btn btn-user"
-                    style={{ backgroundColor: '#AC3B61', color: '#fff' }}><span className="fa fa-calendar-plus"></span>&nbsp;{startDate} - {stopDate} <span className="fa fa-caret-down"></span></button>
-                </DateRangePicker>
-              </div>
+                  <h6 className="font-weight-bold text-dark text-center" > Ticket Pool
+  
+                  </h6>
+                  <DateRangePicker startDate={new Date()}
+                    endDate={new Date()}
+                    ranges={{
+                      'Today': [moment(), moment()],
+                      'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+                      'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+                      'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+                      'This Month': [moment().startOf('month'), moment().endOf('month')],
+                      'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+                    }}
+                    showCustomRangeLabel={true}
 
-
-              <div className="card-body">
-                <div className="table-responsive">
-                  {isLoader ? <center><img src={loader} alt="Loading ..." /> </center> :
-
-                    <MDBContainer>
-                      <Bar data={dataBar} options={barChartOptions} />
-                    </MDBContainer>
-                  }
+                    onApply={(e, p) => {
+                      loadAgentTickets(p.startDate._d, p.endDate._d);
+                    }}>
+                    <button className="btn btn-user"
+                      style={{ backgroundColor: '#AC3B61', color: '#fff' }}><span className="fa fa-calendar-plus"></span>&nbsp;{startDate} - {stopDate} <span className="fa fa-caret-down"></span></button>
+                  </DateRangePicker>
                 </div>
 
+
+                <div className="card-body">
+                  <div className="table-responsive">
+                    {isLoader ? <center><img src={loader} alt="Loading ..." /> </center> :
+
+                      <MDBContainer>
+                        <Bar data={dataBar} options={barChartOptions} />
+                      </MDBContainer>
+                    }
+                  </div>
+
+                </div>
+
+
               </div>
-
-
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
 
-);
+  );
 }
 
 export default App;
