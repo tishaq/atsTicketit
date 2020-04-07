@@ -79,7 +79,7 @@ function App() {
     //   + userName + "&apiKey=" + apiKey + "&startDate=" + util.getTodayDate(start) + "&stopDate=" + util.getTodayDate(end) + "&hash=" + hash, {
 
     try {
-      const res = await axios.get("https://atstest.ajisaqsolutions.com/api/admin/ticketsSummary?userName="
+      const res = await axios.get("https://cors-anywhere.herokuapp.com/https://atstest.ajisaqsolutions.com/api/admin/ticketsSummary?userName="
         + userName + "&apiKey=" + apiKey + "&startDate=" + util.getTodayDate(start) + "&stopDate=" + util.getTodayDate(end) + "&hash=" + hash, {
         headers: {
           'Access-Control-Allow-Origin': '*',
@@ -123,7 +123,7 @@ function App() {
                     background: 'linear-gradient(to bottom, #EDC7B7, #FFFFFF)', color: '#5A0028'
                   }}>
                   <h6 className="font-weight-bold text-dark text-center" > Ticket Pool
-  
+
                   </h6>
                   <DateRangePicker startDate={new Date()}
                     endDate={new Date()}

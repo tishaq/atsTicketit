@@ -128,7 +128,7 @@ export default function AgentPayments() {
             return;
         }
         try {
-            const res = await axios.get("https://atstest.ajisaqsolutions.com/api/aggregator/getAgentPayments?userName="
+            const res = await axios.get("https://cors-anywhere.herokuapp.com/https://atstest.ajisaqsolutions.com/api/aggregator/getAgentPayments?userName="
                 + userName + "&apiKey=" + apiKey + "&agentId="
                 + agentId + "&startDate=" + util.getTodayDate(start) + "&stopDate=" + util.getTodayDate(end) + "-23&hash=" + hash, {
                 headers: {
@@ -169,7 +169,7 @@ export default function AgentPayments() {
         const apiKey = "atstest";
         const hash = sha.sha512(userName + apiKey);
         // console.log(hash);
-        const res = await axios.get("https://atstest.ajisaqsolutions.com/api/aggregator/listAgent?userName="
+        const res = await axios.get("https://cors-anywhere.herokuapp.com/https://atstest.ajisaqsolutions.com/api/aggregator/listAgent?userName="
             + userName + "&apiKey=" + apiKey + "&hash=" + hash, {
             headers: {
                 'Access-Control-Allow-Origin': '*',

@@ -58,7 +58,7 @@ export default function Aggregator() {
                 name: aggregator.name,
                 userName: aggregator.userName,
                 email: aggregator.email,
-                phone: aggregator.phone
+                phoneNo: aggregator.phone
 
             }
         ))
@@ -71,14 +71,14 @@ export default function Aggregator() {
         const hash = sha.sha512(user + apiKey);
         // console.log(hash);
         try {
-            const res = await axios.get("https://atstest.ajisaqsolutions.com/api/admin/listAggregators?userName="
+            const res = await axios.get("https://cors-anywhere.herokuapp.com/https://atstest.ajisaqsolutions.com/api/admin/listAggregators?userName="
                 + user + "&apiKey=" + apiKey + "&hash=" + hash, {
                 headers: {
                     'Access-Control-Allow-Origin': '*',
                 }
             });
-            // console.log(res.data);
-            setAggregators(res.data);
+            console.log(res.data);
+            setAggregators(res.data.data);
         } catch (error) {
             console.log(error.response);
         }
@@ -93,7 +93,7 @@ export default function Aggregator() {
         const password = "pass1234"
         const hash = sha.sha512(user + apiKey + name + userName + password + email + phone);
         // console.log(hash);
-        const res = await axios.get("https://atstest.ajisaqsolutions.com/api/admin/createAggregator?userName="
+        const res = await axios.get("https://cors-anywhere.herokuapp.com/https://atstest.ajisaqsolutions.com/api/admin/createAggregator?userName="
             + user + "&apiKey=" + apiKey + "&name=" + name + "&username=" + userName +
             "&password=" + password + "&email=" + email + "&phone=" + phone + "&hash=" + hash, {
             headers: {
@@ -104,6 +104,7 @@ export default function Aggregator() {
 
         setIsLoader(false);
         setToggleForm(!toggleForm);
+        loadAggregators();
         return { result: res.data.status };
     }
     return (
