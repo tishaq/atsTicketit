@@ -116,7 +116,7 @@ export default function Aggregator() {
 
                     <div className="container-fluid">
 
-                        <button onClick={(e) => { setToggleForm(!toggleForm) }} className="btn btn-user" style={{ backgroundColor: "#5A0028", color: "white", borderRadius: '50px' }}>
+                        <button onClick={(e) => { setToggleForm(!toggleForm) }} className="btn btn-user" style={{ backgroundColor: "#AC3B61", color: "white" }}>
                             {toggleForm ? <span className="fa fa-1x fa-plus-circle">&nbsp; Aggregator</span> : <span className="fa fa-1x fa-times-circle">&nbsp;Cancel</span>}</button>
                         {!toggleForm ?
 

@@ -15,7 +15,7 @@ export default function Menu(props) {
                         <div className="sidebar-brand-text mx-3">Ticketing</div>
                     </a>
                     <hr className="sidebar-divider my-0" />
-                    <li className="nav-item active">
+                    <li className={"nav-item" + props.history === "/" ? "active" : ""}>
                         <a to="/" className="nav-link" href="/">
                             <i className="fas fa-fw fa-tachometer-alt"></i>
                             <span>Dashboard</span></a>
@@ -24,13 +24,13 @@ export default function Menu(props) {
                     <div className="sidebar-heading">Aggregator</div> */}
                     <hr className="sidebar-divider" />
                     <li className="nav-item" >
-                        <a to="/aggregator" className="nav-link" href="/aggregator">
+                        <a to="/aggregators" className="nav-link" href="/aggregators">
                             <i className="fas fa-fw fa-mobile-alt"></i>
                             <span>Aggregator</span></a>
                     </li>
                     <hr className="sidebar-divider" />
                     <li className="nav-item" >
-                        <a to="/tickets" className="nav-link" href="/tickets">
+                        <a to="/agents" className="nav-link" href="/agents">
                             <i className="fas fa-fw fa-mobile-alt"></i>
                             <span>Agents</span></a>
                     </li>

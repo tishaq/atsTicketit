@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import sha from 'js-sha512';
 import { MDBDataTable } from "mdbreact";
-import * as util from "./util"
+import * as util from "./util";
 import loader from "./loader.gif"
 import moment from "moment";
 import DateRangePicker from "react-bootstrap-daterangepicker";
