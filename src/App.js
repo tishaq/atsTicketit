@@ -75,10 +75,10 @@ function App() {
     // const start = util.getTodayDate(p.startDate._d);
     // const end = util.getTodayDate(p.endDate._d);
     const hash = sha.sha512(userName + apiKey + util.getTodayDate(start) + util.getTodayDate(end));
-    // console.log("https://cors-anywhere.herokuapp.com/https://atstest.ajisaqsolutions.com/api/admin/ticketsSummary?userName="
+    // console.log("https://atstest.ajisaqsolutions.com/api/admin/ticketsSummary?userName="
     //   + userName + "&apiKey=" + apiKey + "&startDate=" + util.getTodayDate(start) + "&stopDate=" + util.getTodayDate(end) + "&hash=" + hash);
     try {
-      const res = await axios.get("https://cors-anywhere.herokuapp.com/https://atstest.ajisaqsolutions.com/api/admin/ticketsSummary?userName="
+      const res = await axios.get("https://atstest.ajisaqsolutions.com/api/admin/ticketsSummary?userName="
         + userName + "&apiKey=" + apiKey + "&startDate=" + util.getTodayDate(start) + "&stopDate=" + util.getTodayDate(end) + "&hash=" + hash);
       if (res.data.status === "OK") {
         res.data.data.forEach((element) => {

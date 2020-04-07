@@ -21,7 +21,20 @@ export default function Menu(props) {
                             <span>Dashboard</span></a>
                     </li>
                     {/* <hr className="sidebar-divider" />
-                    <div className="sidebar-heading">Menu</div> */}
+                    <div className="sidebar-heading">Aggregator</div> */}
+                    <hr className="sidebar-divider" />
+                    <li className="nav-item" >
+                        <a to="/aggregator" className="nav-link" href="/aggregator">
+                            <i className="fas fa-fw fa-mobile-alt"></i>
+                            <span>Aggregator</span></a>
+                    </li>
+                    <hr className="sidebar-divider" />
+                    <li className="nav-item" >
+                        <a to="/tickets" className="nav-link" href="/tickets">
+                            <i className="fas fa-fw fa-mobile-alt"></i>
+                            <span>Agents</span></a>
+                    </li>
+                    <hr className="sidebar-divider" />
                     <li className="nav-item" >
                         <a to="/tickets" className="nav-link" href="/tickets">
                             <i className="fas fa-fw fa-mobile-alt"></i>

@@ -132,7 +132,7 @@ export default function AgentTickets() {
             return;
         }
         try {
-            const res = await axios.get("https://cors-anywhere.herokuapp.com/https://atstest.ajisaqsolutions.com/api/aggregator/getAgentTickets?userName="
+            const res = await axios.get("https://atstest.ajisaqsolutions.com/api/aggregator/getAgentTickets?userName="
                 + userName + "&apiKey=" + apiKey + "&agentId="
                 + agentId + "&startDate=" + util.getTodayDate(start) + "&stopDate=" + util.getTodayDate(end) + "&hash=" + hash);
             if (res.data.status === "OK") {
@@ -167,7 +167,7 @@ export default function AgentTickets() {
         const apiKey = "atstest";
         const hash = sha.sha512(userName + apiKey);
         // console.log(hash);
-        const res = await axios.get("https://cors-anywhere.herokuapp.com/https://atstest.ajisaqsolutions.com/api/aggregator/listAgent?userName="
+        const res = await axios.get("https://atstest.ajisaqsolutions.com/api/aggregator/listAgent?userName="
             + userName + "&apiKey=" + apiKey + "&hash=" + hash);
         // console.log(res.data);
 
