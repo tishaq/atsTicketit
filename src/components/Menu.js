@@ -15,7 +15,7 @@ export default function Menu(props) {
                         <div className="sidebar-brand-text mx-3">Ticketing</div>
                     </a>
                     <hr className="sidebar-divider my-0" />
-                    <li className={"nav-item" + props.history === "/" ? "active" : ""}>
+                    <li className="nav-item active">
                         <a to="/" className="nav-link" href="/">
                             <i className="fas fa-fw fa-tachometer-alt"></i>
                             <span>Dashboard</span></a>

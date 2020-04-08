@@ -189,7 +189,7 @@ export default function Agents() {
 
                         </center>
                         <br />
-                        <button onClick={(e) => { setToggleForm(!toggleForm) }} className="btn btn-user" style={{ backgroundColor: "#AC3B61", color: "white" }}>
+                        {/* <button onClick={(e) => { setToggleForm(!toggleForm) }} className="btn btn-user" style={{ backgroundColor: "#AC3B61", color: "white" }}>
                             {toggleForm ? <span className="fa fa-1x fa-plus-circle">&nbsp; Agent</span> : <span className="fa fa-1x fa-times-circle">&nbsp;Cancel</span>}</button>
                         {!toggleForm ?
 
@@ -288,35 +288,35 @@ export default function Agents() {
                                 </div>
                             </div>
 
-                            :
+                            : */}
 
-                            <div className="col-lg-12 col-md-12 col-sm-12">
-                                <div className="card shadow mb-lg-1">
-                                    <div className="card-header py-3"
-                                        style={{
-                                            background: 'linear-gradient(to bottom, #EDC7B7, #FFFFFF)', color: '#5A0028'
-                                        }}>
-                                        <h6 className="font-weight-bold text-dark text-center" > agents</h6>
+                        <div className="col-lg-12 col-md-12 col-sm-12">
+                            <div className="card shadow mb-lg-1">
+                                <div className="card-header py-3"
+                                    style={{
+                                        background: 'linear-gradient(to bottom, #EDC7B7, #FFFFFF)', color: '#5A0028'
+                                    }}>
+                                    <h6 className="font-weight-bold text-dark text-center" > agents</h6>
+                                </div>
+
+                                <div className="card-body">
+                                    <div className="table-responsive">
+
+                                        {isLoader ? <center><img src={loader} alt="Loading ..." /></center> :
+                                            <MDBDataTable
+                                                striped
+                                                bordered
+                                                hover
+                                                data={agentsTableData}
+                                            />
+                                        }
                                     </div>
 
-                                    <div className="card-body">
-                                        <div className="table-responsive">
-
-                                            {isLoader ? <center><img src={loader} alt="Loading ..." /></center> :
-                                                <MDBDataTable
-                                                    striped
-                                                    bordered
-                                                    hover
-                                                    data={agentsTableData}
-                                                />
-                                            }
-                                        </div>
-
-                                    </div>
                                 </div>
                             </div>
+                        </div>
 
-                        }
+
                     </div>
 
 
