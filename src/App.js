@@ -92,7 +92,7 @@ function App() {
             d[agent] = 0;
           }
 
-          d[agent] += element.fee * element.quantity;
+          d[agent] += element.fee;
 
         });
         // console.log(d);

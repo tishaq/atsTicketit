@@ -79,7 +79,7 @@ export default function AgentTickets() {
             ticketType: ticket.ticketType,
             itemName: ticket.itemName,
             quantity: ticket.quantity,
-            amount: util.formatMoney(ticket.fee * ticket.quantity),
+            amount: util.formatMoney(ticket.fee),
             date: ticket.date
         }))
     };
@@ -92,14 +92,14 @@ export default function AgentTickets() {
 
             },
             {
-                label: 'Colletion',
-                field: 'collection',
+                label: 'Product',
+                field: 'product',
                 sort: 'asc',
 
             },
             {
-                label: 'Quantity',
-                field: 'quantity',
+                label: 'Transaction',
+                field: 'transaction',
                 sort: 'asc',
 
             },
@@ -112,8 +112,8 @@ export default function AgentTickets() {
         ],
         rows: Object.entries(ticketSummary).map((ticket, index) => ({
             sn: index + 1,
-            collection: ticket[0],
-            quantity: ticket[1].length,
+            product: ticket[0],
+            transaction: ticket[1].length,
             amount: util.formatMoney(ticket[1].reduce((curr, prev) => curr + prev))
         }))
     };
@@ -147,8 +147,8 @@ export default function AgentTickets() {
                         d[item] = [];
                     }
 
-                    d[item].push(element.fee * element.quantity);
-                    total += element.fee * element.quantity
+                    d[item].push(element.fee);
+                    total += element.fee;
 
                 });
                 // console.log(d);
