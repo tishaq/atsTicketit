@@ -110,7 +110,7 @@ function App() {
   };
 
   return (
-    <div id="wrapper" >
+    <div id="wrapper">
       <Menu setToggleMenu={setToggleMenu} toggleMenu={toggleMenu} />
       <div id="content-wrapper" className="d-flex flex-column">
         <div id="content">
